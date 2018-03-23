@@ -23,6 +23,11 @@ var (
 
 var mErr error
 
+//GetDataBaseName GetDataBaseName
+func GetDataBaseName() string {
+	return database
+}
+
 // Err get err
 func Err() error {
 	return mErr
