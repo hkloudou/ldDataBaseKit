@@ -8,7 +8,7 @@
 ``` go
 
 if err:=ldDataBaseKit.Err();err!=nil{
-  panic("database err:", err)
+  panic(err)
 }
 
 dbse, errDB := ldDataBaseKit.GetMongoDBSession()
