@@ -1,4 +1,5 @@
 all:
+	@echo "make"
 	go test ./
 run:
 	@make push
