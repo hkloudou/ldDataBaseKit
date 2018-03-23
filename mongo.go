@@ -28,7 +28,7 @@ func GetMongoDBSession() (*mgo.Session, error) {
 	return mMgoSession.Clone(), nil
 }
 
-//CloseMongo 关闭数据库链接
+//CloseMongo Close a mongodb connect
 func CloseMongo() {
 	mMgoSession.Close()
 }

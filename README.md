@@ -1,5 +1,4 @@
-# ldDataBaseKit [![Build Status](https://travis-ci.org/hkloudou/ldDataBaseKit.svg?branch=master)](https://travis-ci.org/hkloudou/ldDataBaseKit)
-[![Build Status](https://godoc.org/hkloudou/ldDataBaseKit.svg?status.svg)](https://godoc.org/github.com/hkloudou/ldDataBaseKit)
+# ldDataBaseKit [![Build Status](https://travis-ci.org/hkloudou/ldDataBaseKit.svg?branch=master)](https://travis-ci.org/hkloudou/ldDataBaseKit) [![Build Status](https://godoc.org/hkloudou/ldDataBaseKit.svg?status.svg)](https://godoc.org/github.com/hkloudou/ldDataBaseKit)
 - ldDataBaseKit is a databasekit writen by golang
 - deppend on mgo (gopkg.in/mgo.v2)
 ### download and update
