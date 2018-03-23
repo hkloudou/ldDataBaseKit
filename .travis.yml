@@ -1,5 +1,7 @@
 language: go
 go:
   - "1.10"
+before_script:
+  - "go get github.com/hkloudou/ldDataBaseKit"
 script:
-  - make test
+  - go test github.com/hkloudou/ldDataBaseKit
