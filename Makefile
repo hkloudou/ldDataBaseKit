@@ -1,3 +1,5 @@
+all:
+	go test ./
 run:
 	@make push
 push:
