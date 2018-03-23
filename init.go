@@ -44,7 +44,7 @@ func initConfig() error {
 	// readfrom ini
 	configfile = env.Get("DB_CONFIGFILE", "conf/database.ini")
 	configtype = env.Get("DB_CONFIGTYPE", "ini")
-	addrs = env.Get("DB_MONGO_ADDRS", "")
+	addrs = env.Get("DB_MONGO_ADDRS", "127.0.0.1")
 	database = env.Get("DB_MONGO_DATABASE", "")
 	username = env.Get("DB_MONGO_USERNAME", "")
 	password = env.Get("DB_MONGO_PASSWORD", "")
@@ -55,6 +55,8 @@ func initConfig() error {
 			return err
 		}
 	}
+
+	//log.Println(addrs, database, username, password)
 	if addrs == "" {
 		return errors.New("addrs not define in env and configfile")
 	} else if database == "" {
@@ -73,7 +75,7 @@ func initConfig() error {
 		Password:  password,
 		PoolLimit: 4096,
 	}
-	if err := InitMongoDBSession(dialInfo, mgo.Strong); err != nil {
+	if err := ReInitMongoDBSession(dialInfo, mgo.Strong); err != nil {
 		//log.Println("链接主数据库失败", err)
 		return err
 	}

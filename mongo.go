@@ -8,8 +8,8 @@ import (
 
 var mMgoSession *mgo.Session
 
-//InitMongoDBSession InitMongoDBSession
-func InitMongoDBSession(dialInfo *mgo.DialInfo, mode mgo.Mode) error {
+//ReInitMongoDBSession ReInitMongoDBSession
+func ReInitMongoDBSession(dialInfo *mgo.DialInfo, mode mgo.Mode) error {
 	var errDial error
 	mMgoSession, errDial = mgo.DialWithInfo(dialInfo)
 	if errDial != nil {
