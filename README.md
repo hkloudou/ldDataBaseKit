@@ -4,6 +4,25 @@
 ### download and update
 `go get -u -v github.com/hkloudou/ldDataBaseKit`
 
+### enviroment
+``` sh
+ENV DB_CONFIGFILE #default conf/database.ini(the config file path)
+ENV DB_CONFIGTYPE #default ini (format of config file ex.https://github.com/astaxie/beego/tree/master/config)
+
+ENV DB_MONGO_ADDRS  #default "" example localhost,8.1.213.1
+ENV DB_MONGO_DATABASE   #deault "" example testdatabase
+ENV DB_MONGO_USERNAME   #default ""
+ENV DB_MONGO_PASSWORD   #default ""
+```
+
+``` go
+if DB_MONGO_ADDRS == "" || DB_MONGO_DATABASE == "" {
+  // read from DB_CONFIGFILE
+} else {
+  // use parame from env define
+}
+```
+
 ### example
 ``` go
 
