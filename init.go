@@ -19,6 +19,7 @@ var (
 	database string
 	username string
 	password string
+	timeout  = time.Second * 5
 )
 
 var mErr error
@@ -48,6 +49,9 @@ func initConfig() error {
 	database = env.Get("DB_MONGO_DATABASE", "")
 	username = env.Get("DB_MONGO_USERNAME", "")
 	password = env.Get("DB_MONGO_PASSWORD", "")
+	if t, err := time.ParseDuration(env.Get("DB_MONGO_TIMEOUT", "5s")); err == nil {
+		timeout = t
+	}
 
 	//if addrs not exist or database name not exist,then read from ini file
 	if addrs == "" || database == "" {
@@ -69,7 +73,7 @@ func initConfig() error {
 	dialInfo := &mgo.DialInfo{
 		Addrs:     strings.Split(addrs, ","),
 		Direct:    false,
-		Timeout:   time.Second * 5,
+		Timeout:   timeout,
 		Database:  database,
 		Username:  username,
 		Password:  password,
@@ -93,6 +97,13 @@ func readFromConfigFile() error {
 	database = iniconf.String("mongo::database")
 	username = iniconf.String("mongo::username")
 	password = iniconf.String("mongo::password")
+	t := iniconf.String("mongo::timeout")
+	if t == "" {
+		t = "5s"
+	}
+	if t, err := time.ParseDuration(t); err == nil {
+		timeout = t
+	}
 	return nil
 }
 

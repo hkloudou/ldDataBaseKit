@@ -23,7 +23,7 @@ func ReInitMongoDBSession(dialInfo *mgo.DialInfo, mode mgo.Mode) error {
 //GetMongoDBSession GetMongoDBSession
 func GetMongoDBSession() (*mgo.Session, error) {
 	if mMgoSession == nil {
-		return nil, errors.New("hcLionDataBase.GetMongoDBSession:please InitMongoDBSession before use GetMongoDBSession")
+		return nil, errors.New("please InitMongoDBSession before use GetMongoDBSession")
 	}
 	return mMgoSession.Clone(), nil
 }

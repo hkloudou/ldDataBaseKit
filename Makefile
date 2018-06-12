@@ -3,6 +3,9 @@ all:
 run:
 	@make push
 push:
-	-git add . && git commit -m 'build auto commit' && git push origin master
+	-git add .
+	-git commit -m 'build auto commit'
+	-git tag -f 0.1.2
+	-git push origin master -f --tags
 test:
 	@go test ./
