@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	lddatabasekit "github.com/hkloudou/ldDataBaseKit"
+	lddatabasekit "github.com/hkloudou/lddatabasekit"
 )
 
 func Test_config(t *testing.T) {
