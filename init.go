@@ -1,19 +1,15 @@
-package ldDataBaseKit
+package lddatabasekit
 
 import (
 	"errors"
-	"os"
-	"path"
 	"strings"
 	"time"
 
-	"github.com/astaxie/beego/config"
-	"github.com/astaxie/beego/config/env"
 	mgo "gopkg.in/mgo.v2"
 )
 
-var configfile string
-var configtype string
+//var configfile string
+//var configtype string
 var (
 	addrs    string
 	database string
@@ -42,23 +38,29 @@ func init() {
 }
 
 func initConfig() error {
+
 	// readfrom ini
-	configfile = env.Get("DB_CONFIGFILE", "conf/database.ini")
-	configtype = env.Get("DB_CONFIGTYPE", "ini")
-	addrs = env.Get("DB_MONGO_ADDRS", "127.0.0.1")
-	database = env.Get("DB_MONGO_DATABASE", "")
-	username = env.Get("DB_MONGO_USERNAME", "")
-	password = env.Get("DB_MONGO_PASSWORD", "")
-	if t, err := time.ParseDuration(env.Get("DB_MONGO_TIMEOUT", "5s")); err == nil {
+	//configfile = getEnv("DB_CONFIGFILE", "conf/database.ini")
+	//configtype = getEnv("DB_CONFIGTYPE", "ini")
+	addrs = getEnv("DB_MONGO_ADDRS", "127.0.0.1")
+	database = getEnv("DB_MONGO_DATABASE", "")
+	username = getEnv("DB_MONGO_USERNAME", "")
+	password = getEnv("DB_MONGO_PASSWORD", "")
+
+	if t, err := time.ParseDuration(getEnv("DB_MONGO_TIMEOUT", "5s")); err == nil {
 		timeout = t
 	}
 
 	//if addrs not exist or database name not exist,then read from ini file
-	if addrs == "" || database == "" {
-		if err := readFromConfigFile(); err != nil {
-			return err
+
+	/*
+		if addrs == "" || database == "" {
+			if err := readFromConfigFile(); err != nil {
+				return err
+			}
 		}
-	}
+
+	*/
 
 	//log.Println(addrs, database, username, password)
 	if addrs == "" {
@@ -88,22 +90,25 @@ func initConfig() error {
 
 func readFromConfigFile() error {
 	// makesure path exist
-	os.MkdirAll(path.Dir(configfile), 0777)
-	iniconf, err := config.NewConfig(configtype, configfile)
-	if err != nil {
-		return errors.New("config file " + configfile + " read error")
-	}
-	addrs = iniconf.String("mongo::addrs")
-	database = iniconf.String("mongo::database")
-	username = iniconf.String("mongo::username")
-	password = iniconf.String("mongo::password")
-	t := iniconf.String("mongo::timeout")
-	if t == "" {
-		t = "5s"
-	}
-	if t, err := time.ParseDuration(t); err == nil {
-		timeout = t
-	}
+	/*
+		os.MkdirAll(path.Dir(configfile), 0777)
+		iniconf, err := config.NewConfig(configtype, configfile)
+		if err != nil {
+			return errors.New("config file " + configfile + " read error")
+		}
+		addrs = iniconf.String("mongo::addrs")
+		database = iniconf.String("mongo::database")
+		username = iniconf.String("mongo::username")
+		password = iniconf.String("mongo::password")
+		t := iniconf.String("mongo::timeout")
+		if t == "" {
+			t = "5s"
+		}
+		if t, err := time.ParseDuration(t); err == nil {
+			timeout = t
+		}
+		/*/
+	errors.New("remove ini support")
 	return nil
 }
 

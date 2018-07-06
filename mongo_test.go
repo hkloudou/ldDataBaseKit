@@ -1,15 +1,15 @@
-package ldDataBaseKit_test
+package lddatabasekit_test
 
 import (
 	"log"
 	"testing"
 	"time"
 
-	"github.com/hkloudou/ldDataBaseKit"
+	lddatabasekit "github.com/hkloudou/ldDataBaseKit"
 )
 
 func Test_config(t *testing.T) {
-	log.Println(ldDataBaseKit.Err())
+	log.Println(lddatabasekit.Err())
 }
 
 func Test_time(t *testing.T) {

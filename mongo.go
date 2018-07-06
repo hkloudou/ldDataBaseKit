@@ -1,4 +1,4 @@
-package ldDataBaseKit
+package lddatabasekit
 
 import (
 	"errors"
