@@ -11,11 +11,12 @@ import (
 //var configfile string
 //var configtype string
 var (
-	addrs    string
-	database string
-	username string
-	password string
-	timeout  = time.Second * 5
+	addrs        string
+	database     string
+	username     string
+	password     string
+	timeout      = time.Second * 5
+	ConnectError error
 )
 
 var mErr error
@@ -81,9 +82,9 @@ func initConfig() error {
 		Password:  password,
 		PoolLimit: 4096,
 	}
-	if err := ReInitMongoDBSession(dialInfo, mgo.Strong); err != nil {
+	if ConnectError = ReInitMongoDBSession(dialInfo, mgo.Strong); ConnectError != nil {
 		//log.Println("链接主数据库失败", err)
-		return err
+		return ConnectError
 	}
 	return nil
 }
