@@ -1,2 +1,20 @@
 {
+    "go.testTimeout": "30s",
+    "fileheader.customMade": {
+        "Author": "hkloudou",
+        "Github": "https://github.com/hkloudou/",
+        "Date": "Do not edit",
+        "LastEditors": "卢教(aven) hkloudou@gmail.com", // 文件最后编辑者
+        "LastEditTime": "Do not edit",
+        //"Description": "当前项目的所"
+    },
+    "fileheader.configObj": {
+        "autoAdd": true,
+        "headInsertLine": {
+            "go": 2 // go后缀的文件，在第二行插入文件头部注释
+        }
+    }
+    //"fileheader.Author": "https://webfont.io/",
+    //"fileheader.LastModifiedBy": "卢教(lujiao)",
+    //"fileheader.tpl": "/*\r\n * @Author: {author} \r\n * @Date: {createTime} \r\n * @Last Modified by:   {lastModifiedBy} \r\n * @Last Modified time: {updateTime} \r\n * email: mail.webfont.io@gmail.com\r\n */\r\n"
 }
