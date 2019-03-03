@@ -1,5 +1,13 @@
 package lddatabasekit
 
+/*
+ * @Author: hkloudou
+ * @Github: https://github.com/hkloudou/
+ * @LastEditors: 卢教(aven) hkloudou@gmail.com
+ * @Date: 2018-07-07 02:45:59
+ * @LastEditTime: 2019-03-03 14:42:59
+ */
+
 import (
 	"errors"
 	"strings"
@@ -11,12 +19,13 @@ import (
 //var configfile string
 //var configtype string
 var (
-	addrs        string
-	database     string
-	username     string
-	password     string
-	timeout      = time.Second * 5
-	ConnectError error
+	addrs          string
+	database       string
+	username       string
+	password       string
+	replicaSetName string
+	timeout        = time.Second * 5
+	ConnectError   error
 )
 
 var mErr error
@@ -47,6 +56,7 @@ func initConfig() error {
 	database = getEnv("DB_MONGO_DATABASE", "")
 	username = getEnv("DB_MONGO_USERNAME", "")
 	password = getEnv("DB_MONGO_PASSWORD", "")
+	replicaSetName = getEnv("DB_MONGO_REPLICASETNAME", "")
 
 	if t, err := time.ParseDuration(getEnv("DB_MONGO_TIMEOUT", "5s")); err == nil {
 		timeout = t
@@ -81,6 +91,9 @@ func initConfig() error {
 		Username:  username,
 		Password:  password,
 		PoolLimit: 4096,
+	}
+	if replicaSetName != "" {
+		dialInfo.ReplicaSetName = replicaSetName
 	}
 	if ConnectError = ReInitMongoDBSession(dialInfo, mgo.Strong); ConnectError != nil {
 		//log.Println("链接主数据库失败", err)
