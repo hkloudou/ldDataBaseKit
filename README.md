@@ -1,8 +1,15 @@
-# ldDataBaseKit [![Build Status](https://travis-ci.org/hkloudou/ldDataBaseKit.svg?branch=master)](https://travis-ci.org/hkloudou/ldDataBaseKit) [![Build Status](https://godoc.org/hkloudou/ldDataBaseKit.svg?status.svg)](https://godoc.org/github.com/hkloudou/ldDataBaseKit)
-- ldDataBaseKit is a databasekit writen by golang
+<!--
+ * @Author: hkloudou
+ * @Github: https://github.com/hkloudou/
+ * @LastEditors: 卢教(aven) hkloudou@gmail.com
+ * @Date: 2018-07-07 02:45:59
+ * @LastEditTime: 2019-03-18 05:10:03
+ -->
+# lddatabasekit [![Build Status](https://travis-ci.org/hkloudou/lddatabasekit.svg?branch=master)](https://travis-ci.org/hkloudou/lddatabasekit) [![Build Status](https://godoc.org/hkloudou/lddatabasekit.svg?status.svg)](https://godoc.org/github.com/hkloudou/lddatabasekit)
+- lddatabasekit is a databasekit writen by golang
 - deppend on mgo (gopkg.in/mgo.v2)
 ### download and update
-`go get -u -v github.com/hkloudou/ldDataBaseKit`
+`go get -u -v github.com/hkloudou/lddatabasekit`
 
 ### enviroment
 ``` sh
@@ -26,11 +33,11 @@ if DB_MONGO_ADDRS == "" || DB_MONGO_DATABASE == "" {
 ### example
 ``` go
 
-if err:=ldDataBaseKit.Err();err!=nil{
+if err:=lddatabasekit.Err();err!=nil{
   panic(err)
 }
 
-dbse, errDB := ldDataBaseKit.GetMongoDBSession()
+dbse, errDB := lddatabasekit.GetMongoDBSession()
 if errDB != nil {
   //log.Println("database session clone error")
   return
