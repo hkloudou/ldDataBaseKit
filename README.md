@@ -3,7 +3,7 @@
  * @Github: https://github.com/hkloudou/
  * @LastEditors: 卢教(aven) hkloudou@gmail.com
  * @Date: 2018-07-07 02:45:59
- * @LastEditTime: 2019-03-18 05:10:03
+ * @LastEditTime: 2019-03-22 03:46:58
  -->
 # lddatabasekit [![Build Status](https://travis-ci.org/hkloudou/lddatabasekit.svg?branch=master)](https://travis-ci.org/hkloudou/lddatabasekit) [![Build Status](https://godoc.org/hkloudou/lddatabasekit.svg?status.svg)](https://godoc.org/github.com/hkloudou/lddatabasekit)
 - lddatabasekit is a databasekit writen by golang
@@ -29,7 +29,6 @@ if DB_MONGO_ADDRS == "" || DB_MONGO_DATABASE == "" {
   // use parame from env define
 }
 ```
-
 ### example
 ``` go
 
