@@ -8,6 +8,6 @@ init:
 all:
 	@echo "make"
 git:
-	git autotag -commit 'auto commit' -tag=true -push=true
+	git autotag -commit 'auto commit' -t -p -i
 test:
 	@go test ./

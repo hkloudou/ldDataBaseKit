@@ -5,11 +5,12 @@ package lddatabasekit
  * @Github: https://github.com/hkloudou/
  * @LastEditors: 卢教(aven) hkloudou@gmail.com
  * @Date: 2018-07-07 02:45:59
- * @LastEditTime: 2019-03-03 14:42:59
+ * @LastEditTime: 2019-03-22 03:46:31
  */
 
 import (
 	"errors"
+	"os"
 	"strings"
 	"time"
 
@@ -52,10 +53,22 @@ func initConfig() error {
 	// readfrom ini
 	//configfile = getEnv("DB_CONFIGFILE", "conf/database.ini")
 	//configtype = getEnv("DB_CONFIGTYPE", "ini")
+
 	addrs = getEnv("DB_MONGO_ADDRS", "127.0.0.1")
 	database = getEnv("DB_MONGO_DATABASE", "")
 	username = getEnv("DB_MONGO_USERNAME", "")
 	password = getEnv("DB_MONGO_PASSWORD", "")
+
+	//link mongo
+	if len(os.Getenv("MONGO_PORT_27017_TCP_ADDR")) > 0 {
+		addrs = getEnv("MONGO_PORT_27017_TCP_ADDR", addrs)
+		addrs = addrs + ":" + getEnv("MONGO_PORT_27017_TCP_PORT", "27017")
+
+		username = getEnv("MONGO_ENV_MONGO_INITDB_ROOT_USERNAME", username)
+		password = getEnv("MONGO_ENV_MONGO_INITDB_ROOT_PASSWORD", password)
+		database = getEnv("MONGO_ENV_MONGO_INITDB_ROOT_USERNAME", database)
+	}
+
 	replicaSetName = getEnv("DB_MONGO_REPLICASETNAME", "")
 
 	if t, err := time.ParseDuration(getEnv("DB_MONGO_TIMEOUT", "5s")); err == nil {
