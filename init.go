@@ -5,7 +5,7 @@ package lddatabasekit
  * @Github: https://github.com/hkloudou/
  * @LastEditors: 卢教(aven) hkloudou@gmail.com
  * @Date: 2018-07-07 02:45:59
- * @LastEditTime: 2019-03-22 03:46:31
+ * @LastEditTime: 2019-03-25 23:27:46
  */
 
 import (
@@ -55,8 +55,8 @@ func initConfig() error {
 	//configtype = getEnv("DB_CONFIGTYPE", "ini")
 
 	addrs = getEnv("DB_MONGO_ADDRS", "127.0.0.1")
-	database = getEnv("DB_MONGO_DATABASE", "")
-	username = getEnv("DB_MONGO_USERNAME", "")
+	database = getEnv("DB_MONGO_DATABASE", "admin")
+	username = getEnv("DB_MONGO_USERNAME", "admin")
 	password = getEnv("DB_MONGO_PASSWORD", "")
 
 	//link mongo
