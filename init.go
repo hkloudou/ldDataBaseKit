@@ -5,11 +5,12 @@ package lddatabasekit
  * @Github: https://github.com/hkloudou/
  * @LastEditors: 卢教(aven) hkloudou@gmail.com
  * @Date: 2018-07-07 02:45:59
- * @LastEditTime: 2019-03-25 23:27:46
+ * @LastEditTime: 2019-03-27 00:36:22
  */
 
 import (
 	"errors"
+	"log"
 	"os"
 	"strings"
 	"time"
@@ -96,6 +97,7 @@ func initConfig() error {
 	} else if password == "" {
 		return errors.New("password not define in env and configfile")
 	}
+	log.Println("mongo:", "addr:", strings.Split(addrs, ","))
 	dialInfo := &mgo.DialInfo{
 		Addrs:     strings.Split(addrs, ","),
 		Direct:    false,
