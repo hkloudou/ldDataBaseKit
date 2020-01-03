@@ -5,7 +5,7 @@ package lddatabasekit
  * @Github: https://github.com/hkloudou/
  * @LastEditors: 卢教(aven) hkloudou@gmail.com
  * @Date: 2018-07-07 02:45:59
- * @LastEditTime: 2019-03-02 19:49:12
+ * @LastEditTime: 2019-03-28 22:14:58
  */
 
 import (
@@ -21,7 +21,6 @@ func ReInitMongoDBSession(dialInfo *mgo.DialInfo, mode mgo.Mode) error {
 	var errDial error
 	mMgoSession, errDial = mgo.DialWithInfo(dialInfo)
 	if errDial != nil {
-
 		return errors.New("hcLionDataBase.InitMongoDBSession:" + "Connect error " + errDial.Error())
 	}
 	mMgoSession.SetMode(mode, true)

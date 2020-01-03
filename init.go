@@ -5,7 +5,7 @@ package lddatabasekit
  * @Github: https://github.com/hkloudou/
  * @LastEditors: 卢教(aven) hkloudou@gmail.com
  * @Date: 2018-07-07 02:45:59
- * @LastEditTime: 2019-03-27 00:36:22
+ * @LastEditTime: 2019-03-28 22:14:38
  */
 
 import (
@@ -50,11 +50,6 @@ func init() {
 }
 
 func initConfig() error {
-
-	// readfrom ini
-	//configfile = getEnv("DB_CONFIGFILE", "conf/database.ini")
-	//configtype = getEnv("DB_CONFIGTYPE", "ini")
-
 	addrs = getEnv("DB_MONGO_ADDRS", "127.0.0.1")
 	database = getEnv("DB_MONGO_DATABASE", "admin")
 	username = getEnv("DB_MONGO_USERNAME", "admin")
@@ -62,9 +57,9 @@ func initConfig() error {
 
 	//link mongo
 	if len(os.Getenv("MONGO_PORT_27017_TCP_ADDR")) > 0 {
+		addrs = "mongo"
 		addrs = getEnv("MONGO_PORT_27017_TCP_ADDR", addrs)
 		addrs = addrs + ":" + getEnv("MONGO_PORT_27017_TCP_PORT", "27017")
-
 		username = getEnv("MONGO_ENV_MONGO_INITDB_ROOT_USERNAME", username)
 		password = getEnv("MONGO_ENV_MONGO_INITDB_ROOT_PASSWORD", password)
 		database = getEnv("MONGO_ENV_MONGO_INITDB_ROOT_USERNAME", database)
@@ -114,30 +109,6 @@ func initConfig() error {
 		//log.Println("链接主数据库失败", err)
 		return ConnectError
 	}
-	return nil
-}
-
-func readFromConfigFile() error {
-	// makesure path exist
-	/*
-		os.MkdirAll(path.Dir(configfile), 0777)
-		iniconf, err := config.NewConfig(configtype, configfile)
-		if err != nil {
-			return errors.New("config file " + configfile + " read error")
-		}
-		addrs = iniconf.String("mongo::addrs")
-		database = iniconf.String("mongo::database")
-		username = iniconf.String("mongo::username")
-		password = iniconf.String("mongo::password")
-		t := iniconf.String("mongo::timeout")
-		if t == "" {
-			t = "5s"
-		}
-		if t, err := time.ParseDuration(t); err == nil {
-			timeout = t
-		}
-		/*/
-	errors.New("remove ini support")
 	return nil
 }
 
